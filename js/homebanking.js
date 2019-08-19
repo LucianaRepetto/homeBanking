@@ -25,11 +25,19 @@ function restarDinero(num){
 }
 
 function cambiarLimiteDeExtraccion() {
-
+    const nuevoLimite = parseInt(prompt("Establecer nuevo límite de extracción", "1000"));
+    limiteExtraccion = nuevoLimite;
+    actualizarLimiteEnPantalla();
+    alert("Su nuevo límite de extracción es: $" + limiteExtraccion)
 }
 
 function extraerDinero (){
-   
+    const dineroAextraer = parseInt(prompt("¿Cuanto dinero desea retirar?", "1000"));
+    const saldoCuentaAnterior = saldoCuenta; //almaceno el valor anterior para mostrarlo en pantalla
+    restarDinero(dineroAextraer);
+    actualizarSaldoEnPantalla();
+    alert("Has retirado: $" + dineroAextraer
+         + "\nSaldo anterior: $"+ saldoCuentaAnterior  + "\nSaldo actual: $"+ saldoCuenta );
 }
 
 function depositarDinero() {
