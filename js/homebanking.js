@@ -33,11 +33,20 @@ function cambiarLimiteDeExtraccion() {
 
 function extraerDinero (){
     const dineroAextraer = parseInt(prompt("¿Cuanto dinero desea retirar?", "1000"));
-    const saldoCuentaAnterior = saldoCuenta; //almaceno el valor anterior para mostrarlo en pantalla
-    restarDinero(dineroAextraer);
-    actualizarSaldoEnPantalla();
-    alert("Has retirado: $" + dineroAextraer
-         + "\nSaldo anterior: $"+ saldoCuentaAnterior  + "\nSaldo actual: $"+ saldoCuenta );
+
+    if(dineroAextraer > saldoCuenta){
+        alert("No hay saldo disponible en su cuenta para extraer esa cantidad de dinero");
+    }else if(dineroAextraer > limiteExtraccion){
+        alert("La cantidad de dinero que deseas extraer es mayor a tu límite de extracción");
+    }else if(dineroAextraer % 100 !== 0){
+        alert("Sólo puedes extraer billetes de 100");
+    }else{
+        const saldoCuentaAnterior = saldoCuenta; //almaceno el valor anterior para mostrarlo en pantalla
+        restarDinero(dineroAextraer);
+        actualizarSaldoEnPantalla();
+        alert("Has retirado: $" + dineroAextraer
+            + "\nSaldo anterior: $"+ saldoCuentaAnterior  + "\nSaldo actual: $"+ saldoCuenta );
+    };
 }
 
 function depositarDinero() {
