@@ -5,6 +5,18 @@ let saldoCuenta = 50000;
 
 let limiteExtraccion = 3000;
 
+let agua = 350;
+
+let telefono = 425;
+
+let luz = 210;
+
+let internet = 570;
+
+let cuentaAmiga1 = 1234567;
+
+let cuentaAmiga2 = 7654321;
+
 //Ejecución de las funciones que actualizan los valores de las variables en el HTML.
 window.onload = function() {
     cargarNombreEnPantalla();
@@ -60,10 +72,64 @@ function depositarDinero() {
 }
 
 function pagarServicio() {
+    const pagoServicio = parseInt(prompt("Ingrese el número que corresponde con el servicio que desea pagar"
+    +"\n1 - Agua"
+    +"\n2 - Luz" 
+    +"\n3 - Internet"
+    +"\n4 - Teléfono", "2"));
+    //verifico que la cuenta tenga dinero suficiente
+    const saldoCuentaAnterior = saldoCuenta;
 
+    if(pagoServicio > saldoCuenta){
+        alert("No cuentas con el saldo disponible para realizar esta transacción")
+    }else{  
+        switch(pagoServicio){
+            case 1: 
+                restarDinero(agua);
+                actualizarSaldoEnPantalla();
+                alert("Has pagado el servicio Agua" +
+          "\nSaldo anterior: $"+ saldoCuentaAnterior  + "\nSaldo Descontado: $"+ agua +"\nSaldo actual: $"+ saldoCuenta );
+                break;
+            case 2:
+                restarDinero(luz);
+                actualizarSaldoEnPantalla();
+                alert("Has pagado el servicio Luz" +
+          "\nSaldo anterior: $"+ saldoCuentaAnterior  + "\nSaldo Descontado: $"+ luz +"\nSaldo actual: $"+ saldoCuenta );
+                break;
+            case 3:
+                restarDinero(internet);
+                actualizarSaldoEnPantalla();
+                alert("Has pagado el servicio Internet" +
+          "\nSaldo anterior: $"+ saldoCuentaAnterior  + "\nSaldo Descontado: $"+ internet +"\nSaldo actual: $"+ saldoCuenta );
+                break;
+            case 4:
+                restarDinero(telefono);
+                actualizarSaldoEnPantalla();
+                alert("Has pagado el servicio Teléfono" +
+          "\nSaldo anterior: $"+ saldoCuentaAnterior  + "\nSaldo Descontado: $"+ telefono +"\nSaldo actual: $"+ saldoCuenta );
+                break;
+            default:
+                alert("No existe el servicio seleccionado")
+    }};
 }
 
 function transferirDinero() {
+    const montoATransferir = parseInt(prompt("¿Cuánto desea transferir?"));
+    const saldoCuentaAnterior = saldoCuenta;
+
+    if(montoATransferir>saldoCuenta){
+        alert("No tienes suficiente dinero para realizar la transferencia")
+    }else{
+        const cuentaATransferir = parseInt(prompt("¿A que número de cuenta desea transferir?"));
+            if(cuentaATransferir == cuentaAmiga1 || cuentaATransferir == cuentaAmiga2 ){
+                restarDinero(montoATransferir);
+                actualizarSaldoEnPantalla();
+                alert("Se han transferido: $" + montoATransferir + "\nCuenta destino: " + cuentaATransferir + "\nSaldo actual: $"+ saldoCuenta);
+            }else{
+                alert("Solo puedes transferir a una cuenta amiga, ingresa el numero de cuenta correcto");
+                
+            }
+    }
 
 }
 
