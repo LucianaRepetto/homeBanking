@@ -36,6 +36,14 @@ function esTexto(foo) {
     return false;
 }
 
+//funcion para ver si hicieron click en cancel
+/*function cancelar(foo){
+    if(foo == null){
+        return true;
+    }
+   return false;
+}*/
+
 //Funciones que tenes que completar
 function sumarDinero(num) {
     saldoCuenta += num;
@@ -50,8 +58,7 @@ function restarDinero(num) {
 function cambiarLimiteDeExtraccion() {
     const nuevoLimite = parseInt(prompt("Establecer nuevo límite de extracción", "6000"));
     if (esTexto(nuevoLimite)) {
-        console.log("salis");
-        alert("Ingresa un valor numérico");
+        console.log("Sale de la funcion");
     } else {
         limiteExtraccion = nuevoLimite;
         actualizarLimiteEnPantalla();
@@ -63,8 +70,7 @@ function cambiarLimiteDeExtraccion() {
 function extraerDinero() {
     const dineroAextraer = parseInt(prompt("¿Cuanto dinero desea retirar?", "1000"));
     if (esTexto(dineroAextraer)) {
-        console.log("salis");
-        alert("Ingresa un valor numérico");
+        console.log("sale de la funcion");
     } else if (dineroAextraer > saldoCuenta) {
         alert("No hay saldo disponible en su cuenta para extraer esa cantidad de dinero");
     } else if (dineroAextraer > limiteExtraccion) {
@@ -86,7 +92,6 @@ function depositarDinero() {
     const saldoCuentaAnterior = saldoCuenta; //almaceno el valor anterior para mostrarlo en pantalla
     if (esTexto(depositarDinero)) {
         console.log("Sale de la función")
-        alert("Ingresa un valor numérico");;
     } else {
         sumarDinero(dineroAdepositar); // sumo el deposito al total de mi cuenta 
         actualizarSaldoEnPantalla();
@@ -106,8 +111,7 @@ function pagarServicio() {
     const saldoCuentaAnterior = saldoCuenta;
 
     if (esTexto(pagoServicio)) {
-        console.log("Sale de la función")
-        alert("Ingresa un valor numérico");
+        console.log("Sale de la función");
     } else {
         if (pagoServicio > saldoCuenta) {
             alert("No cuentas con el saldo disponible para realizar esta transacción")
@@ -149,7 +153,6 @@ function transferirDinero() {
     const saldoCuentaAnterior = saldoCuenta;
     if (esTexto(montoATransferir)) {
         console.log("Salir de la funcion");
-        alert("Ingresa un valor numérico");
 
     } else if (montoATransferir > saldoCuenta) {
         alert("No tienes suficiente dinero para realizar la transferencia")
