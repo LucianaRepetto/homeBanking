@@ -90,7 +90,8 @@ function extraerDinero() {
 function depositarDinero() {
     const dineroAdepositar = parseInt(prompt("¿Cuanto dinero desea depositar?", "1000"));
     const saldoCuentaAnterior = saldoCuenta; //almaceno el valor anterior para mostrarlo en pantalla
-    if (esTexto(depositarDinero)) {
+ 
+    if (esTexto(dineroAdepositar)) {
         console.log("Sale de la función")
     } else {
         sumarDinero(dineroAdepositar); // sumo el deposito al total de mi cuenta 
@@ -107,46 +108,60 @@ function pagarServicio() {
         + "\n2 - Luz"
         + "\n3 - Internet"
         + "\n4 - Teléfono", "2"));
-    //verifico que la cuenta tenga dinero suficiente
+  
     const saldoCuentaAnterior = saldoCuenta;
 
     if (esTexto(pagoServicio)) {
         console.log("Sale de la función");
     } else {
-        if (pagoServicio > saldoCuenta) {
-            alert("No cuentas con el saldo disponible para realizar esta transacción")
-        } else {
-            switch (pagoServicio) {
-                case 1:
+
+        switch (pagoServicio) {
+            case 1:
+                if (agua > saldoCuenta) {
+                    alert("No cuentas con el saldo disponible para realizar esta transacción");
+                } else {
                     restarDinero(agua);
                     actualizarSaldoEnPantalla();
                     alert("Has pagado el servicio Agua" +
                         "\nSaldo anterior: $" + saldoCuentaAnterior + "\nSaldo Descontado: $" + agua + "\nSaldo actual: $" + saldoCuenta);
-                    break;
-                case 2:
+                }
+                break;
+            case 2:
+                if (luz > saldoCuenta) {
+                    alert("No cuentas con el saldo disponible para realizar esta transacción");
+                } else {
                     restarDinero(luz);
                     actualizarSaldoEnPantalla();
                     alert("Has pagado el servicio Luz" +
                         "\nSaldo anterior: $" + saldoCuentaAnterior + "\nSaldo Descontado: $" + luz + "\nSaldo actual: $" + saldoCuenta);
-                    break;
-                case 3:
+                }
+                break;
+            case 3:
+                if (internet > saldoCuenta) {
+                    alert("No cuentas con el saldo disponible para realizar esta transacción");
+                } else {
                     restarDinero(internet);
                     actualizarSaldoEnPantalla();
                     alert("Has pagado el servicio Internet" +
                         "\nSaldo anterior: $" + saldoCuentaAnterior + "\nSaldo Descontado: $" + internet + "\nSaldo actual: $" + saldoCuenta);
-                    break;
-                case 4:
+                }
+                break;
+            case 4:
+                if (telefono > saldoCuenta) {
+                    alert("No cuentas con el saldo disponible para realizar esta transacción");
+                } else {
                     restarDinero(telefono);
                     actualizarSaldoEnPantalla();
                     alert("Has pagado el servicio Teléfono" +
                         "\nSaldo anterior: $" + saldoCuentaAnterior + "\nSaldo Descontado: $" + telefono + "\nSaldo actual: $" + saldoCuenta);
-                    break;
-                default:
-                    alert("No existe el servicio seleccionado")
-            }
+                }
+                break;
+            default:
+                alert("No existe el servicio seleccionado")
         }
-    };
-}
+    }
+};
+
 
 function transferirDinero() {
     const montoATransferir = parseInt(prompt("¿Cuánto desea transferir?"));
