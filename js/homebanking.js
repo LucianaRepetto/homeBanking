@@ -28,21 +28,24 @@ window.onload = function () {
 }
 
 //funcion para ver si es texto
+/*
 function esTexto(foo) {
-    if (isNaN(foo)) {
+    console.log(foo);
+    if (typeof foo === 'string') {
 
         return true;
     }
     return false;
-}
-
-//funcion para ver si hicieron click en cancel
-/*function cancelar(foo){
-    if(foo == null){
-        return true;
-    }
-   return false;
 }*/
+
+function esNumero(num){
+    console.log(num);
+    if(typeof num === 'number' && !isNaN(num)){
+        return true;
+    }else{
+        return false;
+    }
+}
 
 //Funciones que tenes que completar
 function sumarDinero(num) {
@@ -57,7 +60,8 @@ function restarDinero(num) {
 
 function cambiarLimiteDeExtraccion() {
     const nuevoLimite = parseInt(prompt("Establecer nuevo límite de extracción", "6000"));
-    if (esTexto(nuevoLimite)) {
+    //console.log(!esNumero(nuevoLimite))
+    if (!esNumero(nuevoLimite)) {
         console.log("Sale de la funcion");
     } else {
         limiteExtraccion = nuevoLimite;
@@ -186,7 +190,7 @@ function transferirDinero() {
 }
 
 function iniciarSesion() {
-    const inicioSesion = parseInt(prompt("Ingresa tu código de seguridad"));
+    const inicioSesion = prompt("Ingresa tu código de seguridad");
 
     if (inicioSesion == codigoSeguridad) {
         alert("Bienvenido/a " + nombreUsuario + ". Ya puedes comenzar a realizar operaciones");
