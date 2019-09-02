@@ -73,8 +73,8 @@ function cambiarLimiteDeExtraccion() {
 
 function extraerDinero() {
     const dineroAextraer = parseInt(prompt("¿Cuanto dinero desea retirar?", "1000"));
-    if (esTexto(dineroAextraer)) {
-        console.log("sale de la funcion");
+    if (!esNumero(dineroAextraer)) {
+        console.log("Sale de la funcion");
     } else if (dineroAextraer > saldoCuenta) {
         alert("No hay saldo disponible en su cuenta para extraer esa cantidad de dinero");
     } else if (dineroAextraer > limiteExtraccion) {
@@ -94,9 +94,9 @@ function extraerDinero() {
 function depositarDinero() {
     const dineroAdepositar = parseInt(prompt("¿Cuanto dinero desea depositar?", "1000"));
     const saldoCuentaAnterior = saldoCuenta; //almaceno el valor anterior para mostrarlo en pantalla
- 
-    if (esTexto(dineroAdepositar)) {
-        console.log("Sale de la función")
+    
+    if (!esNumero(dineroAdepositar)) {
+        console.log("Sale de la funcion");
     } else {
         sumarDinero(dineroAdepositar); // sumo el deposito al total de mi cuenta 
         actualizarSaldoEnPantalla();
@@ -115,8 +115,8 @@ function pagarServicio() {
   
     const saldoCuentaAnterior = saldoCuenta;
 
-    if (esTexto(pagoServicio)) {
-        console.log("Sale de la función");
+    if (!esNumero(pagoServicio)) {
+        console.log("Sale de la funcion");
     } else {
 
         switch (pagoServicio) {
@@ -170,7 +170,8 @@ function pagarServicio() {
 function transferirDinero() {
     const montoATransferir = parseInt(prompt("¿Cuánto desea transferir?"));
     const saldoCuentaAnterior = saldoCuenta;
-    if (esTexto(montoATransferir)) {
+
+    if (!esNumero(montoATransferir)) {
         console.log("Salir de la funcion");
 
     } else if (montoATransferir > saldoCuenta) {
